@@ -59,6 +59,59 @@ int main()
             infile.get(ch);
             std::cout<<ch;
         }
+    case 3:
+        int editchoice;
+        std::string editname;
+        std::cout<<"Enter the contact name to edit : ";
+        std::cin >> editname;
+        int match;
+        for(int i = 0 ; i<=x ; i++)
+        {
+            if(editname == names[i])
+            {
+                match = i;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        std::cout<<std::endl<<"enter the operation 1.Edit name  2.Edit number\n";
+        std::cin>>editchoice;
+        switch (editchoice)
+        {
+            case 1:
+              {
+                std::string newname;
+                std::cout<<"\nenter new name :";
+                std::cin>>newname;
+                names[match] = newname;
+                  for (int i = 0; i <= match ; i++)
+                  {
+                    std::string line;
+                    getline(infile,line);
+                    if (i == match)
+                    outfile<<newname;
+                  }
+                  break;
+                  
+              }
+            case 2:
+            int newnumber;
+            std::cout<<"\nEnter new number: ";
+            std::cin>>newnumber;
+            numbers[match] =newnumber;
+             for (int i = 0; i <= match+1 ; i++)
+                  {
+                    std::string line;
+                    getline(infile,line);
+                    if (i == (match+1))
+                    outfile<<newnumber;
+                  }
+                  break;
+        }
+
+
     }
   
 }
